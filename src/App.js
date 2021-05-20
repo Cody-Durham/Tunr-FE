@@ -84,11 +84,17 @@ const deleteSong = (song) => {
           deleteSong={deleteSong}
           />} />
           <Route exact path="/create" render={(rp) => <Form 
-          {...rp} label="create" song={selectedSong} handleSubmit={handleCreate} />
+          {...rp} 
+          label="create" 
+          song={selectedSong} 
+          handleSubmit={handleCreate} />
           }
           />
           <Route exact path="/edit" render={(rp) =>
-            <Form {...rp} label="edit" song={selectedSong} handleSubmit={handleUpdate} />
+            <Form {...rp} 
+            label="edit" 
+            song={selectedSong} 
+            handleSubmit={handleUpdate} />
           }
           />
         </Switch>
