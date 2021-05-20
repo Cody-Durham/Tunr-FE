@@ -49,7 +49,7 @@ const handleCreate = (newSong) => {
 // handleUpdate/"PUT"/updates the song 
 const handleUpdate = (updateSong) => {
   fetch(url + "/tune/" + updateSong._id,{
-    method: "PUT",
+    method: "PUT", 
     headers: {
       "Content-Type": "application/json"
     },
@@ -77,21 +77,21 @@ const deleteSong = (song) => {
       <hr />
       <main>
         <Switch>
-          <Route exact path="/" render={(rp) => <Display
-          {...rp}
+          <Route exact path="/" render={(routerProps) => <Display
+          {...routerProps}
           songs={songs}
           selectSong={selectSong}
           deleteSong={deleteSong}
           />} />
-          <Route exact path="/create" render={(rp) => <Form 
-          {...rp} 
+          <Route exact path="/create" render={(routerProps) => <Form 
+          {...routerProps} 
           label="create" 
           song={selectedSong} 
           handleSubmit={handleCreate} />
           }
           />
-          <Route exact path="/edit" render={(rp) =>
-            <Form {...rp} 
+          <Route exact path="/edit" render={(routerProps) =>
+            <Form {...routerProps} 
             label="edit" 
             song={selectedSong} 
             handleSubmit={handleUpdate} />
