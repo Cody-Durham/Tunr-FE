@@ -17,7 +17,7 @@ const emptySong = {
   time: 0
 }
 
-const [selectSong, setSelectSong] = React.useState(emptySong)
+const [selectedSong, setSelectedSong] = React.useState(emptySong)
 
 // function to get list of songs
 const getSongs = () => {
@@ -51,13 +51,14 @@ const handleUpdate = (updateSong) => {
     headers: {
       "Content-Type": "application/json"
     },
-    .then(() => getSongs())
+    body: JSON.stringify(updateSong)
   })
+  .then(() => getSongs())
 }
 
 // function to specifiy which song we are updating the state with
 const selectSong = (song) => {
-  setSelectSong(song)
+  setSelectedSong(song)
 }
 
 
@@ -72,6 +73,10 @@ const deleteSong = (song) => {
       <h1>TUNR.</h1>
       <h3>FOR ALL YOUR PLAYLIST NEEDS</h3>
       <hr />
+      <main>
+
+      </main>
+      
     </div>
   );
 }
