@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
+import Display from "./Display"
+import Form from "./Form"
 
 function App() {
 // URL variable to hold backend url 
@@ -74,9 +76,29 @@ const deleteSong = (song) => {
       <h3>FOR ALL YOUR PLAYLIST NEEDS</h3>
       <hr />
       <main>
-
-      </main>
-      
+        <Switch>
+          <Route exact path="/" render={(rp) => <Display
+          {...rp}
+          songs={songs}
+          selectSong={selectSong}
+          deleteSong={deleteSong}
+          />} />
+          <Route exact path="/create" render={(rp) => <Form 
+          {...rp} 
+          label="create" 
+          song={selectedSong} 
+          handleSubmit={handleCreate} />
+          }
+          />
+          <Route exact path="/edit" render={(rp) =>
+            <Form {...rp} 
+            label="edit" 
+            song={selectedSong} 
+            handleSubmit={handleUpdate} />
+          }
+          />
+        </Switch>
+      </main>    
     </div>
   );
 }
