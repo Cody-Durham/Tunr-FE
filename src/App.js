@@ -6,7 +6,8 @@ import Form from "./Form"
 
 function App() {
 // URL variable to hold backend url 
-const url = "https://tunr-backend-cd.herokuapp.com"
+// const url = "https://tunr-backend-cd.herokuapp.com"
+const url = "https://dceypowiga.execute-api.us-west-1.amazonaws.com/dev/tunr"
 
 
 // initial state to hold the list of songs
@@ -23,10 +24,10 @@ const [selectedSong, setSelectedSong] = React.useState(emptySong)
 
 // function to get list of songs
 const getSongs = () => {
-  fetch(url + "/tune/")
+  fetch(url)
   .then((response) => response.json())
   .then((data) => 
-  setSongs(data))
+  setSongs(data.body))
 }
 
 // useEffect acts as a page onload
@@ -36,7 +37,7 @@ React.useEffect(() => {
 
 // handleCreate/"POST"/  creates a new song 
 const handleCreate = (newSong) => {
-  fetch(url + "/tune/", {
+  fetch(url + "/", {
     method: "POST",
     headers: {
       "Content-Type":"application/json"
@@ -48,7 +49,7 @@ const handleCreate = (newSong) => {
 
 // handleUpdate/"PUT"/updates the song 
 const handleUpdate = (updateSong) => {
-  fetch(url + "/tune/" + updateSong._id,{
+  fetch(url + "/" + updateSong._id,{
     method: "PUT", 
     headers: {
       "Content-Type": "application/json"
@@ -65,11 +66,15 @@ const selectSong = (song) => {
 
 
 const deleteSong = (song) => {
-  fetch(url + "/tune/" + song._id, {
+  console.log('delete song', song)
+  fetch(url + "/" + song.projectId, {
     method: "delete"
   })
   .then(() => getSongs())
+  console.log('item deleted')
 }
+
+
   return (
     <div className="App">
       <h1>TUNR.</h1>

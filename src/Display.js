@@ -14,7 +14,7 @@ const Display = (props) => {
             <h1>Playlist 1</h1>
             {songs.map( (item, index) => (
                 <article
-                    key={item._id}>
+                    key={index}>
                     <h3>Title: {item.title}</h3>
                     <h3>Artist: {item.artist}</h3>
                     <h3>Song Length: {item.time}</h3>
@@ -31,7 +31,7 @@ const Display = (props) => {
                             props.selectSong(item)
                             props.history.push('/edit')
                         }}
-                    >Edit new song
+                    >Edit this song
                     </button>
                     <button
                         onClick={ () => {
@@ -39,9 +39,6 @@ const Display = (props) => {
                         }}>
                         Delete
                     </button>
-
-
-
                 </article>
             ))}
         </div>    
