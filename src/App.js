@@ -92,7 +92,7 @@ const deleteSong = (song) => {
           />
           <Route exact path="/edit" render={(routerProps) =>
             <Form {...routerProps} 
-            label="edit" 
+            label="Submit" 
             song={selectedSong} 
             handleSubmit={handleUpdate} />
           }

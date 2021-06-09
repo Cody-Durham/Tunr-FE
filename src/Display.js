@@ -22,9 +22,16 @@ const Display = (props) => {
                     <button
                         onClick={ () => {
                             props.selectSong(item)
-                            props.history.push('/edit')
+                            props.history.push('/create')
                         }}
                     >Add new song
+                    </button>
+                    <button
+                        onClick={ () => {
+                            props.selectSong(item)
+                            props.history.push('/edit')
+                        }}
+                    >Edit new song
                     </button>
                     <button
                         onClick={ () => {
